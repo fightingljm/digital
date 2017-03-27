@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jsqfx</title>
+	<style type="text/css">
+		body{width: 200px;margin: 0 auto;}
+		body>input{text-align: right;margin-top: 20px;border-radius: 5px;}
+		.number{width: 173px;text-align: center;}
+		.sign{width: 173px;text-align: center;}
+		.ec{width: 173px;text-align: center;}
+		.number input,.sign input,.ec input{width: 30px;height: 30px;border-radius: 8px;background-color: #999;outline: none;border: none;margin-top: 10px;margin-left: 5px;}
+	</style>
+</head>
+<body>
+	<!-- 第三步，实现点击等号之后继续运算。
+  即在点击等号之后将运算得到的值赋给第一个数，同时继续把第二个数的值变为空 -->
+	<!-- 第四步，实现不点击等号仍可继续运算。即在点击运算符的时候需要判断第二个数是否为空，如果第二个数不为空时触发了点击运算符的事件，那么同样用switch判断...... -->
+	<!-- 第五步，实现清除的功能。1需要把输入框清空“$(:text).val("")”;2需要num1为空；3需要num2为空；4需要运算符为空 -->
+	<!-- 注意：计算的时候要把字符串转为数字；第四部时要把获取运算符val值得那个写在switch下面； -->
+	<!-- 需要实现的：1、获取两个数；2、点击等号之后，用得到的值，连续运算；3、不点击等号连续运算；4、点击等号之后，忽略得到的值重新运算 -->
+	<input type="text">
+	<div class="number">
+		<input type="button" value="1">
+		<input type="button" value="2">
+		<input type="button" value="3"><br>
+		<input type="button" value="4">
+		<input type="button" value="5">
+		<input type="button" value="6"><br>
+		<input type="button" value="7">
+		<input type="button" value="8">
+		<input type="button" value="9"><br>
+		<input type="button" value="0">
+	</div>
+	<div class="sign">
+		<input type="button" value="+">
+		<input type="button" value="-">
+		<input type="button" value="*">
+		<input type="button" value="/">
+	</div>
+	<div class="ec">
+		<input class="eque" type="button" value="=">
+		<input class="cancel" type="button" value="c">
+	</div>
+	<script src="js/jquery-3.0.0.js"></script>
+  <script type="text/javascript">
+    var num1="";
+    var num2="";
+    var num3="";
+    var sign="";
+    var eque="";
+    $(".number :button").click(function () {
+      var num=$(this).val();
+      console.log(num);
+      if(sign==""){
+				if(eque!=""){
+					num1="";
+					sign=""
+				}
+        num1=num1+num;
+        $(":text").val(num1)
+      }else{
+        num2=num2+num;
+        $(":text").val(num1+sign+num2)
+      }
+    })
+    $(".sign :button").click(function () {
+			if(num2!=""){
+				switch (sign) {
+	        case "+": num3=Number(num1)+Number(num2);break;
+	        case "-": num3=Number(num1)-Number(num2);break;
+	        case "*": num3=Number(num1)*Number(num2);break;
+	        case "/": num3=Number(num1)/Number(num2);break;
+	      }
+				num1=num3;
+				num2=""
+			}
+      sign=$(this).val();
+      $(":text").val(num1+sign)
+    })
+    $(".eque").click(function () {
+      eque=$(this).val();
+      switch (sign) {
+        case "+": num3=Number(num1)+Number(num2);break;
+        case "-": num3=Number(num1)-Number(num2);break;
+        case "*": num3=Number(num1)*Number(num2);break;
+        case "/": num3=Number(num1)/Number(num2);break;
+      }
+      $(":text").val(num3)
+      num1=num3;
+      num2="";
+      sign="";
+    })
+		$(".cancel").click(function() {
+			$(":text").val("");
+			num1="";
+			num2="";
+			sign="";
+		})
+  </script>
+</body>
+</html>

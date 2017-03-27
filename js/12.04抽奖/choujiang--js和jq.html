@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>choujiang--js和jq</title>
+</head>
+<body>
+	<label for="awardListDom">奖项列表</label>
+	<input type="text" value="" id="awardListDom"><br><br>
+	<label for="num">抽到的奖</label>
+	<input type="text" value="" id="num"><br><br>
+	<button id="submit">开始抽奖</button>
+		<!-- 
+		* 思路：随机抽奖，抽一个奖项便减少一个
+		* Math 对象方法：http://www.w3school.com.cn/jsref/jsref_obj_math.asp
+		*  -random():返回 0 ~ 1 之间的随机数。
+		*  -floor():获取整数
+		* 数组操作：- splice(x,y); x:起始位置， y:获取并删除个数 -->
+	<script src="js/jquery-3.0.0.js"></script>
+	<script>
+	 	function random(min,max){
+		    return Math.floor(min+Math.random()*(max-min));
+		}//函数封装
+
+	 	var array=["一等奖","二等奖","三等奖","谢谢参与"]
+	 	var rNum=random(0,array.length);//函数调用，通过调用random函数获取0到4之间的随机整数
+
+
+	 	$("#awardListDom").val(array);
+	 	$("#submit").click(function(){
+	 		//引用数组
+			var newArray=array;
+			var rNum=random(0,newArray.length);
+
+			if(newArray.length<1){
+				$("#awardListDom").val("活动结束");
+				$("#num").val("活动结束");
+			}
+			else{
+				$("#num").val(newArray[rNum]);
+				newArray.splice(rNum,1);
+				console.log(newArray)			
+				$("#awardListDom").val(newArray);
+			}			
+	 	})
+	</script>
+</body>
+</html>

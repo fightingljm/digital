@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>this和原型问题</title>
+</head>
+<body>
+	<script>
+		/*function A(){
+
+		}
+		function B(a){
+			this.a=a;
+		}
+		function C(a){
+			if(a){
+				this.a=a;
+			}
+		}
+		A.prototype.a=1;
+		B.prototype.a=1;
+		C.prototype.a=1;*/
+
+
+		var obj={
+			fun:function (){
+				console.log(this)
+			}
+		}
+		var obj1={
+			fun1:fun
+		}
+		obj.fun();
+		obj1.fun1;
+		
+		
+	</script>
+</body>
+</html>

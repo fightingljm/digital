@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js-nav</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<style type="text/css">
+		*{margin: 0;padding: 0;}
+		.box{overflow: hidden;margin-top: 30px;margin-left: 50px;}
+		ul{list-style: none;}
+		li{width: 100px;height: 40px;float: left;text-align: center;margin: 0 auto;line-height: 40px;color: white;font-family: arial;}
+		span{display: block;height: 40px;cursor: pointer;background-color: #7e3737;/* transition:all 0.5s ease; */ }
+		a{display: block;height: 40px;background-color:#ccc;text-decoration: none;}
+		/* li:hover span{margin-top: -40px;} */
+		.span{margin-top: -40px;}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul>
+			<li><span>Home</span><a href="#">Home</a></li>
+			<li><span>Home</span><a href="#">Home</a></li>
+			<li><span>Home</span><a href="#">Home</a></li>
+			<li><span>Home</span><a href="#">Home</a></li>
+			<li><span>Home</span><a href="#">Home</a></li>
+		</ul>
+	</div>
+	<script src="js/jquery-3.0.0.js"></script>
+	<script type="text/javascript">
+
+		$("ul li").mouseenter(function(){
+			$(this).find("span").stop().animate({"margin-top":"-40px"},500)
+		})
+		$("ul li").mouseleave(function(){
+			$(this).find("span").stop().animate({"margin-top":"0px"},500)
+		})
+	</script>
+</body>
+</html>

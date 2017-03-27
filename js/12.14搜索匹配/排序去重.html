@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>排序去重</title>
+</head>
+<body>
+	<script>
+		//var arr=[3,5,2,66,7,8,11,2,4,66,5,9]
+		/*//排序		
+		var m=0,n=0;
+		for(var i=0;i<arr.length;i++){
+			for(var j=i+1;j<arr.length;j++){  //j=1,2,3
+				if(arr[i]>arr[j]){			//i=0,1,2
+					m=arr[j];
+					n=arr[i];
+					arr[j]=n;
+					arr[i]=m;
+				}
+			}
+		}
+		console.log(arr)*/
+		/*//去重，排序完去重
+		for(var i=0;i<arr.length;i++){
+			if(arr[i]==arr[i+1]){
+				arr.splice(i,1)
+				i=0;
+			}
+		}
+		console.log(arr)*/
+		/*//数组不排序去重,方法一
+		var newArr=[arr[0]]
+		for(var i = 1; i < arr.length; i++){
+			var repeat = false;
+			for(var j = 0; j < newArr.length; j++){
+				if(arr[i] == newArr[j]){
+					repeat = true;
+					break;
+				}
+			}
+			if(!repeat){
+				newArr.push(arr[i]);
+			}
+		}
+		console.log(newArr)*/
+		//数组不排序去重,方法二
+		var newArr=[arr[0]]
+		for(var i = 1; i < arr.length; i++){
+			if(newArr.indexOf(arr[i])==-1){
+				newArr.push(arr[i]);
+			}
+		}
+		console.log(newArr)
+
+
+
+		//测试写开关的原因，以及开关应该写在哪
+		/*//测试一:结论([3, 5, 2, 2, 5, 5, 5, 9, 9, 9, 9, 9, 9, 9, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5]所以是每次都会与之前的每一个比较，只要有不相等的就会放到新数组，所以要加开关)
+		var arr=[3,5,2,5,9,3,5]
+		var newArr=[arr[0]]
+		for(var i = 1; i < arr.length; i++){
+			for(var j = 0; j < newArr.length; j++){
+				if(arr[i] != newArr[j]){
+					newArr.push(arr[i]);
+				}
+			}
+		}
+		console.log(newArr)*/
+		/*//加开关两种：1、全不等的时候放  2、只要有一个相等就放(用第二种)
+		//测试二:结论()
+		//开关可以定义在下面第一个if里边（只是浏览器负荷会加重），但是必须要有break；如果没有break，那么比较的取决于最后一次比较的数
+		//开关也可以定义在for循环外，这样if(kaiguan==1){}else{kaiguan=1;}
+		var arr=[3,5,2,5,9,3,5]
+		var newArr=[arr[0]]
+		for(var i = 1; i < arr.length; i++){		
+			var kaiguan = 1;  
+			for(var j = 0; j < newArr.length; j++){
+				if(arr[i] == newArr[j]){
+					kaiguan = 0;
+					break;
+				}
+			}
+			if(kaiguan==1){
+				newArr.push(arr[i]);
+			}
+		}
+		console.log(newArr)*/
+	</script>
+</body>
+</html>

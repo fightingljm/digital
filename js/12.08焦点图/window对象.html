@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>window对象</title>
+	<style>
+		/* .box{
+			width: 200px;
+			height: 2000px;
+			background-color: #ccc;
+		} */
+	</style>
+</head>
+<body>
+	<!-- <button>按钮</button> -->
+	<span>姓名：</span><input type="text">
+	<!-- <div class="box"></div> -->
+	<script src="js/jquery-3.0.0.js"></script>
+	<script>
+		//window 对象方法
+		//setInterval clearInterval setTimeout clearInterval scrollTo(0,200)
+		
+		/*//scrollTo(0,200)
+		document.getElementsByTagName('button')[0].onclick=function(){
+			scrollTo(0,200);
+		}*/
+
+		//弹出框alert confirm prompt
+		document.getElementsByTagName('input')[0].onclick=function(){
+			var name=prompt("Please enter your name","")
+			if(name!=null&&num!=""){
+				$("input").val(name);
+			}else{
+				$("input").val("取消");
+			}
+		}
+	</script>
+</body>
+</html>

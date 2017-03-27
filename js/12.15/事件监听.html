@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件监听</title>
+	<style>
+		#box1{width: 300px;height: 300px;background-color: #ccc;}
+		#box2{width: 200px;height: 200px;background-color: red;}
+		#box3{width: 100px;height: 100px;background-color: #000;}
+	</style>
+</head>
+<body>
+	<div id="box1">
+		<div id="box2">
+			<div id="box3"></div>
+		</div>
+	</div>
+	<script>
+		//事件冒泡(默认)--默认false;事件捕获true
+		//addEventListener事件监听
+		//event.stopPropagation()阻止事件监听
+		//event.removePropagation()
+		function G(id){
+			return document.getElementById(id)
+		}
+		/*G("box1").addEventListener("click",function(event){
+			var e=event||window.event
+			if(e.stopPropagation()){
+				e.stopPropagation();
+			}else{
+				e.cancleBubble=true;
+			}
+			console.log("我是大盒子")
+		})
+		G("box2").addEventListener("click",function(event){
+			var e=event||window.event
+			if(e.stopPropagation()){
+				e.stopPropagation();
+			}else{
+				e.cancleBubble=true;
+			}
+			console.log("我是中盒子")
+		})
+		G("box3").addEventListener("click",function(event){
+			var e=event||window.event
+			if(e.stopPropagation()){
+				e.stopPropagation();
+			}else{
+				e.cancleBubble=true;
+			}
+			console.log("我是小盒子")
+		})*/
+		G("box1").onclick=function(event){
+			var e=event||window.event
+			if(e.stopPropagation){
+				e.stopPropagation();
+			}else{
+				e.cancelBubble=true;
+			}
+			console.log("我是大盒子")
+		}
+		G("box2").onclick=function(event){
+			var e=event||window.event
+			if(e.stopPropagation){
+				e.stopPropagation();
+			}else{
+				e.cancelBubble=true;
+			}
+			console.log("我是中盒子")
+		}
+		G("box3").onclick=function(event){
+			var e=event||window.event
+			if(e.stopPropagation){
+				e.stopPropagation();
+			}else{
+				e.cancelBubble=true;
+			}
+			console.log("我是小盒子")
+		}
+	</script>
+</body>
+</html>

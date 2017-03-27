@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>递归函数</title>
+</head>
+<body>
+	<script>
+		/*var x=0;
+		function f(){
+			if(x<6){
+				x+=1;
+				console.log(x);
+				f()
+			}
+		}
+		f();*/
+		//题:函数传参，比如：fun(4),则计算1*2*3*4的值
+		/*//方法一
+		var sum=1;
+		function fun(x){
+			for(var i=1;i<=x;i++){		
+				sum*=i;				
+			}
+			console.log(sum)
+		}
+		fun(8)*/
+		//方法二
+		/*function fun(x){
+			if(x==1){
+				return 1;					
+			}else if(x==0){
+				return 0;
+			}else if(x>1){
+				return x*arguments.callee(x-1);
+			}			
+		}
+		var a=fun;
+		fun=null
+		var b=a(8)
+		console.log(b);*/
+		//方法二
+		/*var fun=(function c(x){
+			if(x==1){
+				return 1;					
+			}else if(x==0){
+				return 0;
+			}else if(x>1){
+				return x*c(x-1);
+			}			
+		})
+		var a=fun;
+		fun=null
+		var b=a(8)
+		console.log(b);*/
+		/*//方法三
+		var result=1;
+		function c(x){
+			if(x>1){
+				result=result*x;
+				x--;
+				c(x)					
+			}
+			return result;			
+		}
+		console.log(c(8));*/
+		//方法三,简化
+		var result=1;
+		function c(x){
+			if(x>1){
+				result=c(x-1)*x;									
+			}
+			return result;			
+		}
+		console.log(c(8));
+	</script>
+</body>
+</html>

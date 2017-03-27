@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>列表添加--Dom操作</title>
+</head>
+<body>
+	<input type="text" id="text">
+	<input type="button" id="add" value="添加">
+	<ul id="list">
+		<li>箱包<input type="button"value="删除"></li>
+		<li>家电<input type="button"value="删除"></li>
+		<li>装修<input type="button"value="删除"></li>
+		<li>笔记本<input type="button"value="删除"></li>
+	</ul>
+	<script type="text/javascript">
+	function G(id){
+		return document.getElementById(id);
+	}
+	G("add").onclick=function(){
+		var tex=G("text").value;
+		var li=document.createElement("li")
+
+		var input=document.createElement("input")
+		input.type = "button";  
+		input.value = "删除";
+
+		var node=document.createTextNode(tex);
+
+		li.appendChild(node);
+		li.appendChild(input);
+
+		var list=G("list");
+		list.appendChild(li);
+		
+		/*var shanchu=G("list").getElementsByTagName('input')		
+		for(var i=0;i<shanchu.length;i++){
+			shanchu[i].onclick=function(){
+				this.parentNode.parentNode.removeChild(this.parentNode)
+			}
+		}*/
+	}
+	/*var shanchu=G("list").getElementsByTagName('input')	
+	for(var i=0;i<shanchu.length;i++){
+		shanchu[i].onclick=function(){
+			this.parentNode.parentNode.removeChild(this.parentNode)
+		}
+	}*/	
+	//事件委托 委托对象为祖先级元素(点击删除的事件用事件委托写,代替for循环多个事件,减轻浏览器负荷)
+	G("list").onclick=function(event){
+		//浏览器兼容问题  window.event.srcElement兼容IE6~8,并且function里不能有event;event.target其他浏览器,并且火狐浏览器function里必须有event;所以有以下写法(if之前)
+		var e=null;
+		if(event!=undefined){
+			e=event;
+		}else{
+			e=window.event;
+		}
+		var tar=e.target||e.srcElement;
+		//var tar=event.target||window.event.srcElement;
+		//console.log(tar)
+		if(tar.value=="删除"){
+			tar.parentNode.parentNode.removeChild(tar.parentNode)
+		}
+	}	
+	</script>
+</body>
+</html>

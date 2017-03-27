@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>小图看大图</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<style type="text/css">
+		.bigBox{width: 480px; position: absolute;}
+		.bigBox>img{display: none;}
+		.littleBox>img{width: 240px;float: left;}
+	</style>
+</head>
+<body>
+	<div class="littleBox">
+		<img src="images/1.jpg" alt="">
+		<img src="images/2.jpg" alt="">
+		<img src="images/3.jpg" alt="">
+		<img src="images/4.jpg" alt="">
+	</div>
+	<div class="bigBox"><img src="" alt=""></div>
+	<script src="js/jquery-3.0.0.js"></script>
+	<script type="text/javascript">
+		$(".littleBox img").mousemove(function(event){
+			var X=event.pageX +20+"px";//event.pageX 属性返回鼠标指针的位置，相对于文档的左边缘
+			var Y=event.pageY +20+"px";//event.pageY 属性返回鼠标指针的位置，相对于文档的上边缘
+			$(".bigBox").css({"top":Y,"left":X});
+		})
+		$(".littleBox img").hover(function(){
+			var tex=$(this).attr("src")
+			console.log(tex)
+			$(".bigBox>img").attr("src",tex).stop().fadeIn("slow");
+		},function(){
+			$(".bigBox>img").stop().fadeOut("slow");
+		})
+	</script>
+</body>
+</html>

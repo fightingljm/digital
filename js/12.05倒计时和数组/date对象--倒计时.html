@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>date对象</title>
+</head>
+<body>
+	<p></p>
+	<script src="js/jquery-3.0.0.js"></script>
+	<script>
+		var hour=12;				
+		var minute=36;				
+		var second=0;
+
+		/*var date=new Date();
+		var hour1=date.getHours();
+		var minute1=date.getMinutes();
+		var second1=date.getSeconds();
+
+		var second2=hour*3600000+minute*60000+second*1000;
+		var second3=hour1*3600000+minute1*60000+second1*1000;
+		var second4=second2-second3;*/
+
+		function count(){
+			var showHour,showMinute,showSecond;
+			var date=new Date();
+			var nowHour=date.getHours();
+			var nowMinute=date.getMinutes();
+			var nowSecond=date.getSeconds();
+			showHour=hour-nowHour;			
+			if(minute<nowMinute){
+				showMinute=minute-nowMinute+60;
+				showHour=showHour-1;
+			}else{
+				showMinute=minute-nowMinute;
+			}			
+			if(second<nowSecond){								
+				showSecond=second-nowSecond+60;
+				showMinute=showMinute-1;			
+			}else{
+				showSecond=second-nowSecond;
+			}
+			if(showHour<10){
+				showHour="0"+showHour;
+			}
+			if(showMinute<10){
+				showMinute="0"+showMinute;
+			}
+			if(showSecond<10){
+				showSecond="0"+showSecond;
+			}
+			$("p").text(showHour+":"+showMinute+":"+showSecond)
+			if(showHour.indexOf("-")>0){
+				$("p").text("计时器错误")
+			}	
+			if(showHour==0&&showMinute==0&&showSecond==0){					
+				clearInterval(t);
+				alert("下课");
+			}								
+		}
+		count();
+		var t=setInterval(count,1000)
+		/*function stop(){
+			clearInterval(t)
+			alert("下课")
+		}
+		setTimeout(stop,second4)*/
+	</script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>轮播图</title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			#warp{
+				width: 400px;
+				height: 200px;
+				border: 5px solid  deepskyblue;
+				margin:50px auto;
+				position: relative;
+			}
+			#warp  img{
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				opacity: 0;
+				-webkit-transition: all 1s;
+				-moz-transition: all 1s ;
+				-ms-transition: all 1s ;
+				-o-transition: all 1s ;
+				transition: all 1s ;
+			}
+			#warp img:nth-child(1){
+				opacity: 1;
+			}
+			.left,#right{
+				width: 50px;
+				height: 70px;
+				background-color: gray;
+				color: white;
+				line-height: 70px;
+				position: absolute;
+				top:50%;
+				margin-top: -35px;
+			}
+			.left{
+				left: 0;
+			}
+			#right{
+				right: 0;
+			}
+			#ul1{
+				list-style-type:none ;
+				position: absolute;
+				left: 50%;
+				bottom: 10px;
+				margin-left: -25px;
+			}
+			#ul1 li{
+				background-color: #000;
+				width: 20px;
+				height: 20px;
+				border-radius:50% ;
+				float: left;
+				margin:0 5px ;
+				text-align: center;
+				line-height: 20px;
+				color: white;
+			}
+			#ul1 li:nth-child(1){
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="warp">
+			<!--图片-->
+			<img src="images/1.jpg"/>
+			<img src="images/2.jpg"/>
+			<img src="images/3.jpg"/>
+			<img src="images/4.jpg"/>
+			<!--分页-->
+			<ul id = "ul1">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+			</ul>
+			<!--上下翻页-->
+			<div class="left">上一张</div>
+			<div id="right">下一张</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		//获取对象
+		//warp
+		var warp = document.getElementById("warp");
+		//获取图片
+		var imgs = warp.getElementsByTagName("img");
+		//上一张
+		var left = document.querySelector(".left");
+		//下一张
+		var right = document.getElementById("right");
+		//获取ul
+		var ul1 = document.getElementById("ul1");
+		//获取数字1,2,3,4
+		var lis = ul1.getElementsByTagName("li");
+		
+		
+		var index = 0;
+		
+		
+		
+		function lingFunction () {
+			imgs[index].style.opacity = 0;
+			index--;
+			if (index == -1) {
+				index = 3;
+			}
+			
+			imgs[index].style.opacity = 1;
+		}
+		
+		function fourFunction () {
+			
+			imgs[index].style.opacity = 0;
+			index++;
+			if (index == 4) {
+				index = 0;
+			}
+		
+			imgs[index].style.opacity = 1;
+		}
+		
+	
+		function leftFunction () {		
+			lingFunction ();
+			changePoint();
+		}
+		
+	
+		function rightFunction () {
+			fourFunction ();
+			
+			changePoint();
+		}
+		
+		
+		function changePoint () {
+			for (var i = 0; i < lis.length; i++) {
+			
+				if (index == i) {
+					
+					lis[i].style.backgroundColor = "red";				
+				} else{
+					
+					lis[i].style.backgroundColor = "gray";		
+				}
+			}
+		}
+		
+		
+		function overFunction () {
+				
+				imgs[index].style.opacity = 0;
+				for (var j = 0; j < lis.length; j++) {
+					
+					if (this == lis[j]) {
+						index = j;
+					}
+				}
+				
+				imgs[index].style.opacity = 1;
+				
+				changePoint();
+			}
+		
+		
+		function changeImage () {
+			fourFunction();
+			
+			changePoint();
+		}
+		
+		
+		var timer = setInterval(changeImage,1500);
+		
+		
+		function overFunctionTime () {
+			
+			clearInterval(timer);
+		}
+		
+		
+		function outFunctionTime () {
+			timer = setInterval(changeImage,1500);
+		}
+		
+		
+		
+		
+		left.onclick = leftFunction;
+		
+		right.onclick = rightFunction;
+		
+		for (var i = 0; i < lis.length; i++) {
+			
+			lis[i].onmouseover = overFunction;
+		}
+		
+		warp.onmouseover = overFunctionTime;
+		
+		warp.onmouseout = outFunctionTime;
+	</script>
+</html>

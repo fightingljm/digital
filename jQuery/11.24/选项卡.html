@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选项卡</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<style type="text/css">
+		ul{overflow: hidden;}
+		ul li{width: 100px;line-height: 50px;border: 1px solid #ccc;text-align: center;float: left;}
+		.showBox>div{width: 407px;height: 400px;text-align: center;line-height: 400px;font-size: 20px;}
+		.showBox>div:nth-child(1){background-color: #d88be5;}
+		.showBox>div:nth-child(2){background-color: #9f80d7;}
+		.showBox>div:nth-child(3){background-color: #6c7bcc;}
+		.showBox>div:nth-child(4){background-color: #ff9877;}
+		.showBox .dn{display: none;}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>笔记本</li>
+		<li>手机</li>
+		<li>箱包</li>
+		<li>家电</li>
+	</ul>
+	<div class="showBox">
+		<div>笔记本</div>
+		<div>手机</div>
+		<div>箱包</div>
+		<div>家电</div>
+	</div>
+	<script src="js/jquery-3.0.0.js"></script>
+	<script type="text/javascript">
+		$(".showBox div:gt(0)").addClass("dn");//:gt() 选择器选取 index 值大于指定数字的元素
+		$("ul li").mouseover(function(){
+			var num=$(this).index();
+			console.log(num)
+			$(".showBox div").addClass("dn").eq(num).removeClass("dn")
+		})
+	</script>
+</body>
+</html>

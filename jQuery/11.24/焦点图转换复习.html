@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>焦点图转换复习</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<style type="text/css">
+		.picshow{width: 480px;overflow: hidden;}
+		.pic{width: 1960px;position: relative;}
+		.pic img{display: block;float: left;}
+		.prev{position: absolute;top: 155px;left: 20px;cursor: pointer;opacity: 0.6;}
+		.next{position: absolute;top: 155px;left: 430px;cursor: pointer;opacity: 0.6;}
+		ul{width: 100px;position: absolute;top: 280px;left: 200px;}
+		ul li{width: 20px;height: 20px;float: left;margin-right: 5px;}
+		ul li a{display: block;width: 20px;height: 20px;border-radius: 50%;background-color: #ccc;opacity: 0.8;}
+		.a{background-color: #46114f;}
+	</style>
+</head>
+<body>
+	<div class="picshow">
+		<div class="pic">
+			<img src="images/1.jpg" alt="">
+			<img src="images/2.jpg" alt="">
+			<img src="images/3.jpg" alt="">
+			<img src="images/4.jpg" alt="">
+		</div>
+		<img class="prev" src="images/slider-prev.png" alt="">
+		<img class="next" src="images/slider-next.png" alt="">
+	</div>
+	<ul>
+		<li><a class="a" href="#"></a></li>
+		<li><a href="#"></a></li>
+		<li><a href="#"></a></li>
+		<li><a href="#"></a></li>
+	</ul>
+	<script src="js/jquery-3.0.0.js"></script>
+	<script type="text/javascript">
+		var num=0;
+		$(".next").click(function(event){
+			if(num<3){
+				num=num+1;
+			}else{
+				num=0;
+			}
+			var ml=num * -480 +"px";
+			$(".pic").animate({"margin-left":ml},1000)
+			$("ul li").eq(num).find("a").addClass("a").parent().siblings().find("a").removeClass("a");
+			event.preventDefault();
+		})
+		$(".prev").click(function(event){
+			if(num>0){
+				num=num-1;
+			}else{
+				num=3;
+			}
+			var ml1=num * -480 +"px";
+			$(".pic").animate({"margin-left":ml1},1000)
+			$("ul li").eq(num).find("a").addClass("a").parent().siblings().find("a").removeClass("a");
+			event.preventDefault();
+		})
+		$("ul li a").click(function(event){
+			num=$(this).parent().index();
+			var ml2=num*-480+"px";
+			$(".pic").animate({"margin-left":ml2},1000)
+			$(this).addClass("a").parent().siblings().find("a").removeClass("a")
+			event.preventDefault();
+		})
+	</script>
+</body>
+</html>

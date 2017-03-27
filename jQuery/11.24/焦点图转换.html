@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>焦点图转换</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<style type="text/css">
+		.pic-show{width: 480px;overflow: hidden;}
+		.pic{width: 1920px;height: 320px;position: relative;}
+		.pic img{display: block;float: left;}
+		.pic-show>img{display: block;cursor: pointer;opacity: 0.8; position: absolute;top: 142px;left: 30px;}
+		.pic-show>img:last-child{display: block; position: absolute;left: 414px; } 
+		ul{width: 120px;height: 18px;position: absolute;top: 280px;left: 185px;}
+		li{float: left;width: 20px;height: 18px;margin-left: 5px;}
+		a{display: block;width: 20px;height: 18px;text-decoration: none;border: 1px solid #ccc;border-radius: 50%;background-color: #ccc;opacity: 0.6;}
+		a:hover{background-color: #094a99;}
+		.aCss{background-color: #094a99;}
+		p{width: 480px;text-align: center;}
+		
+	</style>
+</head>
+<body>
+	<div class="pic-show">
+		<div class="pic">
+			<img src="images/1.jpg" alt="">
+			<img src="images/2.jpg" alt="">
+			<img src="images/3.jpg" alt="">
+			<img src="images/4.jpg" alt="">
+		</div>
+		<img class="prev" src="images/slider-prev.png" alt="">
+		<img class="next" src="images/slider-next.png" alt="">
+	</div>
+	<ul>
+		<li><a class="aCss" href="#" title="日落"></a></li>
+		<li><a href="#" title="钢琴"></a></li>
+		<li><a href="#" title="大海"></a></li>
+		<li><a href="#" title="秋色"></a></li>
+	</ul>
+	<p>这是一段测试文字</p>
+	<script src="js/jquery-3.0.0.js"></script>
+	<script type="text/javascript">
+		var num=0;
+		$(".pic-show .next").click(function(event){
+			if(num<3){
+				num=num+1;	
+			}
+			else{
+				num=0;
+			}
+			console.log(num);
+			var mlNum=num * -480+'px';
+			$(".pic").animate({"margin-left":mlNum},1000)
+			$("ul li:eq("+num+") a").addClass("aCss").parent().siblings().find("a").removeClass("aCss");
+			event.preventDefault();
+			var txt=$("ul li").eq(num).find("a").attr("title");
+			console.log(txt);
+			$("p").text(txt);
+		})
+		$(".pic-show .prev").click(function(event){
+			if(num>0){
+				num=num-1;	
+			}
+			else{
+				num=3;
+			}
+			console.log(num);
+			var mlNum2=num * -480+'px';
+			$(".pic").animate({"margin-left":mlNum2},1000)
+			$("ul li").eq(num).find("a").addClass("aCss").parent().siblings().find("a").removeClass("aCss");
+			event.preventDefault();
+			var txt=$("ul li").eq(num).find("a").attr("title");
+			console.log(txt);
+			$("p").text(txt);
+		})
+		$("ul li a").click(function(event){
+			num=$(this).parent().index();
+			var mlNum3=num * -480+'px';
+			$(".pic").animate({"margin-left":mlNum3},500)
+			
+			$(this).addClass("aCss").parent().siblings().find("a").removeClass("aCss");//addClass 
+			event.preventDefault();
+
+			var txt=$(this).attr("title");
+			console.log(txt);
+			$("p").text(txt);
+		})
+	</script>
+
+</body>
+</html>

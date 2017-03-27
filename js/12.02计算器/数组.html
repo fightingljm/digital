@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组Array</title>
+</head>
+<body>
+	<script>
+		/*// 定义数组
+		// 方法1
+		var arr=[1,2,3,4,5,6,7,8];
+		var num=arr[0];
+		console.log(num);
+		// 方法2
+		var arr=[];
+		arr[0]=1;
+		arr[1]=2;
+		arr[2]=3;
+		console.log(arr);
+		console.log(arr.length);
+		// 方法3(构造函数)
+		var arr=new Array(1,2,3,4,5)
+		console.log(arr);*/
+		//属性  length数组中元素的总数
+		//方法
+		var arr=[1,2,3,4,5];
+
+		/*//.push()  在数组末尾处添加一个或多个元素
+		var add=arr.push(6,7,8)
+		console.log(arr);
+		console.log(add);  //并返回新数组的长度*/
+
+		/*//.pop()   删除数组的最后一个元素
+		var del=arr.pop()
+		console.log(arr);
+		console.log(del);  //并返回被删除的元素*/
+
+		/*//.unshift()   在数组开头添加一个或多个元素
+		var tj=arr.unshift(6,7,8)
+		console.log(arr);
+		console.log(tj);  //并返回新数组的长度*/
+
+		/*//.shift()   删除数组的第一个元素
+		var sc=arr.shift()
+		console.log(arr);
+		console.log(sc);  //并返回被删除的元素*/
+
+		/*//.reverse()   倒序
+		var dx=arr.reverse()
+		console.log(arr);
+		console.log(dx);  //并返回数组*/
+
+		/*//.concat()   多个数组合并
+		var arr1=[6,7,8,9,0]
+		var arr2=["ljm"]
+		var hb=arr2.concat(arr,arr1)
+		console.log(arr);
+		console.log(hb);  //并返回结果*/
+
+		/*//.splice(a,b,c)   删除或添加内容
+		//下标a代表删除或添加的位置；b代表删除元素的个数；c代表添加的内容（不添加，或一个，或多个）
+		var a=arr.splice(1,2,"mm",6)
+		console.log(arr);
+		console.log(a);*/
+
+		/*//.slice(a,b)   获取数组中部分元素
+		//下标a代表新数组的起始位置；下标b代表新数组的结束位置（不包括b）
+		var b=arr.slice(1,3)
+		console.log(arr);
+		console.log(b);   //并返回新数组*/
+
+		/*//.join(a)   将数组以a为分隔符连接成字符串
+		var str=arr.join(" ")  //以空格作为分隔符
+		console.log(arr);
+		console.log(str);   //并返回字符串
+		//再把字符串转为数组
+		var arr4=str.split("+")
+		for(var i=0;i<arr4.length;i++){  //用for循环，把数组中的每个字符串转换为数字
+			arr4[i]=Number(arr4[i]);
+		}
+		console.log(arr);*/
+
+		/*//.sort()  //排序
+		function px(a,b){
+			return a-b;
+		}
+		var numArray=[2,33,45,23,56,8,0]
+		var strArray=["liu","jin","meng"]
+		var numa=numArray.sort(px);
+		var stra=strArray.sort(px);
+		console.log(numa);
+		console.log(stra);*/
+
+		/*//for in遍历数组
+		for(var i in arr){
+			console.log(arr[i])
+		}
+
+		//var array=[[1,2,3],["a","b","c"],["你","我","他"]]
+		var array=[[1,2,3],["a","b","c"],["你","我","他"]]
+		var hebing=array[0].concat(array[1],array[2])
+		console.log(hebing);
+		for(var i in hebing){
+			console.log(hebing[i])
+		}*/
+
+		var array=["一等奖","二等奖","三等奖","谢谢参与"]
+
+	</script>
+</body>
+</html>

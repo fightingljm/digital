@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>RegExp的String对象的方法</title>
+</head>
+<body>
+	<!-- 支持正则表达式的 String 对象的方法 -->
+	<script>
+		/*var str="今天天气不错，最高气温20℃，最低气温-1℃。";
+		var re=/-?[0-9]+(?=℃)/g;
+		console.log(re.exec(str))
+		console.log(re.exec(str))*/
+
+		/*//.match()  找到一个或多个正则表达式的匹配
+		var str="今天天气不错，最高气温20℃，最低气温-1℃。";
+		var re=/-?[0-9]+(?=℃)/g;
+		var n=str.match(re);
+		console.log(n);*/
+
+		//.search()  检索与正则表达式相匹配的值--返回相匹配的 String 对象起始位置
+		var str="Mr Blue has a blue house and a blue car";
+		var n=str.search(/blue/i);//忽略大小写
+		var n1=str.search(/blue/);
+		console.log(n);//返回3
+		console.log(n1);//返回14
+		var name = "Doe,John,a,b";
+		var n2=name.replace(/(\w+)\s*,\s*(\w+)/g, "$2 $1");
+		console.log(n2);
+
+		/*//.replace() 替换与正则表达式匹配的子串
+		var str="Mr Blue has a blue house and a blue car";
+		var n=str.replace(/blue/,"red");
+		var n1=str.replace(/blue/gi,"red");//全局替换，忽略大小写
+		console.log(n);//Mr Blue has a red house and a blue car
+		console.log(n1);//Mr red has a red house and a red car*/
+	</script>
+</body>
+</html>

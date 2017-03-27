@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>addClass原生</title>
+	<style>
+		.box{
+			width: 200px;
+			height: 200px;
+			border: 1px solid #ccc;
+		}
+		.test{
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="box test" id="test"></div>
+	<script>
+		function G(id){
+			return document.getElementById(id)
+		}
+		/*function addClass(object,className){
+			var old=object.getAttribute("class");
+			console.log(old)
+			console.log(old.match(className))
+			if(old==null){
+				object.setAttribute("class",className)
+			}else{
+				if(old.match(className)==null){
+					object.setAttribute("class",old+" "+className)
+				}
+			}			
+			// if(old==null){
+			// 	object.setAttribute("class",className)
+			// }else{
+			// 	object.setAttribute("class",old+" "+className)
+			// }			
+			//三目运算
+			// old==null?object.setAttribute("class",className):object.setAttribute("class",old+" "+className)
+		}
+		addClass(G("test"),"test")*/
+		//removeClass方法一:.replace()
+		function removeClass(object,className){
+			var old=object.getAttribute("class");
+			if(old!=null){
+				var reg = new RegExp('(\\s|^)' + className + '(\\s|$)');  
+				object.className = object.className.replace(reg, ' '); 
+			}
+		}
+		removeClass(G("test"),"test")		
+		//removeClass方法二:转换数组字符串
+		/*function removeClass(object,className){
+			var old=object.getAttribute("class");
+			var arr=(object.className).split(" ");//把[class="a"]里a转换成数组
+			console.log(arr)
+			for(var i=0;i<arr.length;i++){
+				if(arr[i]==className){
+					arr.splice(i,1)
+					//console.log(arr)
+					i=0;
+				}
+				var newClass=arr.join(" ")
+				//console.log(newClass)
+				object.className=newClass;
+				//console.log(object.className)				
+			}						
+		}
+		removeClass(G("test"),"test")*/	
+		//removeClass方法三:.filter()数组过滤
+		/*function removeClass(object,className){
+			var old=object.getAttribute("class");
+			var arr=(object.className).split(" ");//把[class="a"]里a转换成数组
+			console.log(arr)
+			function fil(num){
+				return num!=className
+			}
+			var newArr=arr.filter(fil)
+			//console.log(newArr)	
+			var newClass=newArr.join(" ")
+			//console.log(newClass)
+			object.className=newClass;
+			//console.log(object.className)					
+		}
+		removeClass(G("test"),"test")*/		
+	</script>
+</body>
+</html>

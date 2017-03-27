@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则表达式</title>
+</head>
+<body>
+	<script>
+		/*//text方法   返回true或false
+		var re=/t/;   //创建
+		var str="qwert";
+		var result=re.test(str);
+		console.log(result);*/
+		//exec方法   返回null或[匹配的内容,位置,原字符串]
+		var re=/[a-z]+/;   //创建
+		var str="Wert";
+		var result=re.exec(str);
+		console.log(result);
+	</script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>我的购物车 - 京东商城</title>
+	<style>
+		*{margin: 0;padding: 0;margin: 0 auto;}
+		.h2{width: 989px;height: 39px;position: relative;}
+		h2{width: 80px;line-height: 36px;text-align: center;font-family: verdana;font-size: 14px;float: left;cursor: pointer;}
+		h2:hover{color: red}
+		.line{width: 80px;height: 3px;background-color: red;position: absolute;left: 0;top: 37px;}
+		.top{width: 989px;height: 44px;background-color: #f3f3f3;border: 1px solid #aaa;position: relative;}
+		.top input{position: absolute;left: 13px;top: 16px;}
+		.top p{position: absolute;font-size: 13px;color: #666;top: 15px;}
+		.top p:nth-child(2){left: 35px;}
+		.top p:nth-child(3){left: 135px;}
+		.top p:nth-child(4){left: 570px;}
+		.top p:nth-child(5){left: 700px;}
+		.top p:nth-child(6){left: 790px;}
+		.top p:nth-child(7){left: 888px;}
+		ul li{width: 1000px;height: 210px;list-style: none;}
+		ul li .qijian{width: 990px;line-height: 40px;margin: 0 auto;border-bottom: 2px solid #aaa;}
+		ul li .qijian input{margin-left: 13px;}
+		ul li .manjian{width: 990px;line-height: 40px;margin: 0 auto;color: #666;font-size: 13px;}
+		ul li .manjian a{color: black;text-decoration: none;}
+		ul li .shangpin{width: 990px;height: 121px;border-top: 1px solid #f1f1f1;border-bottom: 1px solid #f1f1f1;position: relative; background-color:#fff4e8; }
+		ul li .shangpin input{position: absolute;left: 13px;top: 20px;}
+		ul li .shangpin img{position: absolute;left: 42px;top: 20px;}
+		ul li .shangpin p{width: 200px;height: 34px;position: absolute;left: 132px;top: 20px;color: #333;font-size: 13px;}
+		ul li .shangpin span{display: block;width: 130px;overflow: hidden;-ms-text-overflow: ellipsis;
+		text-overflow: ellipsis;white-space: nowrap;position: absolute;left: 355px;top: 20px;color: #666;font-size: 13px;}
+		ul li .shangpin .danjia{width: 80px;line-height: 21px;position: absolute;left: 570px;top: 20px;font-size: 13px;}
+		.qian1{position: absolute;left: 564px;top: 23px;font-size: 13px;}
+		ul li .shangpin .jian{display: block;text-decoration: none;width: 18px;line-height: 22px;position: absolute;left: 675px;top: 20px;font-size: 12px;border: 1px solid #ccc;background-color: white;text-align: center;color: black}
+		ul li .shangpin .jia{display: block;text-decoration: none;width: 18px;line-height: 22px;position: absolute;left: 735px;top: 20px;font-size: 12px;border: 1px solid #ccc;background-color: white;text-align: center;color: black}
+		ul li .shangpin .count{width: 38px;line-height: 20px;position: absolute;left: 695px;top: 20px;font-size: 13px;}
+		ul li .shangpin .xiaoji{width: 38px;line-height: 20px;position: absolute;left: 790px;top: 20px;font-size: 13px;font-weight: bold;}
+		.qian2{position: absolute;left: 784px;top: 22px;font-size: 13px;font-weight: bold;}
+		ul li .shangpin .caozuo{display: block;width: 130px;position: absolute;left: 888px;top: 20px;font-size: 13px;}
+		ul li .shangpin .caozuo a{color: #666;text-decoration: none;}
+		ul li .shangpin .caozuo a:hover{color: red;}
+
+		.bot{width: 988px;height: 53px;border: 1px solid #f0f0f0;margin-top: 20px;position: relative;}
+
+		.bot input{position: absolute;left: 13px;top: 16px;}
+		.bot p:nth-child(2){position: absolute;font-size: 13px;color: #666;top: 15px;left: 35px;}
+		.bot p:nth-child(7){position: absolute;font-size: 13px;color: #666;top: 12px;left: 735px;}
+		.bot p:nth-child(7)>span{font-size: 16px;color: #e4393c;font-weight: 700;}
+		.bot a{position: absolute;top: 15px;text-decoration: none;color: #666;font-size: 13px;}
+		.bot a>span{color: red;font-weight: bold;}
+		.bot a:hover{color: red;}
+		.bot a:nth-child(3){left: 70px;}
+		.bot a:nth-child(4){left: 170px;}
+		.bot a:nth-child(5){left: 255px;}
+		.bot a:nth-child(6){left: 615px;}
+		.bot a:nth-child(6):hover{color: #666;}
+		.bot a:nth-child(8){display: block;width: 98px;line-height: 53px;background-color: #e64346;color: #fefeff;position: absolute;left: 890px;top: 0;font-size: 18px;text-align: center;font-family: "微软雅黑";}
+	</style>
+</head>
+<body>
+	<div class="h2">
+		<h2 id="h21">全部商品2</h2>
+		<h2 id="h22">京东大药房</h2>
+		<div class="line"></div>
+	</div>		
+	<div class="top">
+		<input type="checkbox" class="quanxuan selected">
+		<p>全选</p>
+		<p>商品</p>
+		<p>单价</p>
+		<p>数量</p>
+		<p>小计</p>
+		<p>操作</p>
+	</div>
+	<ul class="list">
+		<li>
+			<div class="qijian">
+				<input type="checkbox" class="selected">
+				欧塞洛斯照明旗舰店
+			</div>
+			<div class="manjian">
+				活动商品购满3件，即可享受满减 
+				<a href="#">去凑单 ></a>
+			</div>
+			<div class="shangpin">
+				<input type="checkbox" class="selected first">
+				<img src="images/goods1.jpg" alt="">
+				<p>Apple MacBook 12英寸笔记本电脑 玫瑰金色 256GB闪存 MMGL2CH</p>
+				<span>尺码：EF-S 15-85mm f/3.5-5.6 IS USM</span>
+				<div class="qian1">¥</div>
+				<p class="danjia">5499.00</p>
+				<a class="jian" href="#">-</a>
+				<input class="count" type="text" value="1">
+				<a class="jia" href="#">+</a>
+				<div class="qian2">¥</div>
+				<p class="xiaoji">5499.00</p>
+				<span class="caozuo"><a href="#" class="shanchu">删除</a><br><a href="#">移到我的关注</a></span>
+			</div>
+		</li>
+		<li>
+			<div class="qijian">
+				<input type="checkbox" class="selected">
+				闪魔旗舰店
+			</div>
+			<div class="manjian">
+				活动商品购满2件，即可享受满减 
+				<a href="#">去凑单 ></a>
+			</div>
+			<div class="shangpin">
+				<input type="checkbox" class="selected first">
+				<img src="images/goods2.jpg" alt="">
+				<p>佳能（Canon）标准变焦镜头 佳能EOS单反相机镜头 带遮光罩和镜头袋 </p>
+				<span>颜色：银色<br>尺码：16G Cellular版</span>
+				<div class="qian1">¥</div>
+				<p class="danjia">1888.00</p>	
+				<a class="jian" href="#">-</a>
+				<input class="count" type="text" value="1">
+				<a class="jia" href="#">+</a>
+				<div class="qian2">¥</div>
+				<p class="xiaoji">1888.00</p>
+				<span class="caozuo"><a href="#"  class="shanchu">删除</a><br><a href="#">移到我的关注</a></span>
+			</div>
+		</li>
+	</ul>
+	<div class="bot">
+		<input type="checkbox" class="quanxuan selected">
+		<p>全选</p>
+		<a href="#">删除选中的商品</a>
+		<a href="#">移到我的关注</a>
+		<a href="#">清除下柜商品</a>
+		<a href="#">已选择 <span class="counts">0</span> 件商品^</a>
+		<p>总价：<span>¥</span><span class="total">0.00</span></p>
+		<a href="#">去结算</a>
+	</div>
+	<script>
+		var goods=document.getElementsByTagName('li')
+		console.log(goods.length)
+		function getAllTotal(){
+			var total=0;
+			var count=0;
+			for(var i=0;i<goods.length;i++){
+				if(goods[i].getElementsByClassName("first")[0].checked==true){
+					total+=parseFloat(goods[i].getElementsByClassName("xiaoji")[0].innerHTML)
+					count+=parseFloat(goods[i].getElementsByClassName("count")[0].value)
+				}
+			}
+			document.getElementsByClassName("total")[0].innerHTML=total.toFixed(2)
+			document.getElementsByClassName("counts")[0].innerHTML=count
+		}
+		function xiaoji(goods){
+			var xj=0;
+			xj=parseFloat(goods.getElementsByClassName("danjia")[0].innerHTML)*parseFloat(goods.getElementsByClassName("count")[0].value)
+			goods.getElementsByClassName("xiaoji")[0].innerHTML=xj.toFixed(2)
+		}
+		var inputChecked=document.getElementsByClassName("selected")
+		for(var i=0;i<inputChecked.length;i++){
+			inputChecked[i].onclick=function(){
+				//console.log(this.className.indexOf("quanxuan")>=0)
+				if(this.className.indexOf("quanxuan")>=0){
+					for(var j=0;j<inputChecked.length;j++){
+						inputChecked[j].checked=this.checked
+					}
+				}else{
+					var kaiguan=1;
+					for(var n=0;n<document.getElementsByClassName("first").length;n++){
+						if(document.getElementsByClassName("first")[n].checked==false){
+							kaiguan=0;
+						}
+					}
+					if(kaiguan==1){
+						for(var m=0;m<document.getElementsByClassName("quanxuan").length;m++){
+							document.getElementsByClassName("quanxuan")[m].checked=true;
+						}
+					}
+				}
+				if(this.checked==false){
+					for(var m=0;m<document.getElementsByClassName("quanxuan").length;m++){
+						document.getElementsByClassName("quanxuan")[m].checked=false;
+					}
+				}
+				getAllTotal();
+			}
+		}
+		for(var i=0;i<goods.length;i++){
+			goods[i].onclick=function(){
+				var e=event||window.event;
+				var tar=e.target;
+				var num=tar.parentNode.parentNode.getElementsByClassName("count")[0].value;
+				switch(tar.className){
+					case "jia":
+						num++;
+						tar.parentNode.getElementsByClassName("selected")[0].checked=true;break;
+					case "jian":
+						if(num>1){
+							num--;
+						}
+						tar.parentNode.getElementsByClassName("selected")[0].checked=true;break;
+					case "shanchu":
+						tar.parentNode.parentNode.parentNode.parentNode.removeChild(tar.parentNode.parentNode.parentNode);break;
+				}
+				tar.parentNode.parentNode.getElementsByClassName("count")[0].value=num;				
+				xiaoji(tar.parentNode.parentNode);
+				getAllTotal();
+			}
+		}
+	</script>
+</body>
+</html>

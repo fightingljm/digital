@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>概率相等抽奖</title>
+</head>
+<body>
+
+	<button>抽奖</button>
+	<input type="text">
+	<script src="js/jquery-3.0.0.js"></script>
+	<script>
+		var array=["一等奖","二等奖","三等奖","谢谢惠顾"]		
+		$("button").click(function(){
+			var num=Math.floor(Math.random()*array.length);
+			if(array.length>0){
+				$("input").val(array[num])
+				array.splice(num,1)
+			}else{
+				$("input").val("活动结束")
+			}
+		})		
+	</script>
+</body>
+</html>

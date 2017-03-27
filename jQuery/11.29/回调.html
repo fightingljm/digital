@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>回调</title>
+	<style type="text/css">
+		.box{width: 100px;height: 100px;background-color: #ccc;}
+		.active{background-color: red;}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<input type="button" value="按钮">
+	<script src="js/jquery-3.0.0.js"></script>
+	<script type="text/javascript">
+		var kaiguan=0;
+		$(document).ready(function(){			
+			$(":button").click(function(){
+				//判断box的宽
+				/*var width=$(".box").width();
+				if(width==100){
+					$(this).prev().animate({"width":"150"},2000,function(){
+						$(".box").addClass("active")
+					})
+				}else{
+					$(this).prev().animate({"width":"100"},2000,function(){
+						$(".box").removeClass("active")
+					})
+				}*/
+				//开关（0和1）
+				/*if(kaiguan==0){
+					$(this).prev().animate({"width":"150"},2000,function(){
+						$(".box").addClass("active")
+					})
+					kaiguan=1;				
+				}else{
+					$(this).prev().animate({"width":"100"},2000,function(){
+						$(".box").removeClass("active")
+					})
+					kaiguan=0;
+				}*/
+				//判断点击次数--判断奇偶
+				kaiguan=kaiguan+1;
+				if(kaiguan%2==0){
+					$(this).prev().animate({"width":"100"},2000,function(){
+						$(".box").removeClass("active")
+					})				
+				}else{
+					$(this).prev().animate({"width":"150"},2000,function(){
+						$(".box").addClass("active")
+					})
+				}
+			})
+		})		
+	</script>
+</body>
+</html>

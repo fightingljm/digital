@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模拟原生动画--复习</title>
+	<style>
+		#box{
+			width: 200px;
+			height: 200px;
+			margin-left: 200px;
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn">变</button>
+	<div id="box"></div>
+	<script>
+		function ani(obj,styleObj,times,callback){
+			for(var i in styleObj){
+				var name=i;
+				var tar=styleObj[i];
+			}
+			var chushi=parseFloat(style[name])
+			var stop=setInterval(function(){		
+				var style=window.getComputedStyle(obj,null);
+				var old=parseFloat(style[name])
+				if(old<tar){
+					old++;
+					obj.style[name]=old+"px";
+				}else if(old>tar){
+					old--;
+					obj.style[name]=old+"px";
+				}else{
+					clearInterval(stop);
+					callback();
+				}
+			},times/Math.abs(tar-chushi))
+		}
+		var box=document.getElementById('box')
+		var style=window.getComputedStyle(box,null);
+		document.getElementById('btn').onclick=function(){
+			ani(box,{"width":300},2000,function(){
+				ani(box,{"height":300},2000,function(){})
+			})
+		}
+	</script>
+</body>
+</html>

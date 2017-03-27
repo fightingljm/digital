@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>列表添加</title>
+	<link rel="shortcut icon" href="favicon.ico"/>
+</head>
+<body>
+	<input type="text" id="text">
+	<input type="button" id="add" value="添加">
+	<ul class="list">
+		<li>箱包<input type="button" value="删除" class="delete"></li>
+		<li>家电<input type="button" value="删除" class="delete"></li>
+		<li>装修<input type="button" value="删除" class="delete"></li>
+		<li>笔记本<input type="button" value="删除" class="delete"></li>
+	</ul>
+	<script src="js/jquery-3.0.0.js"></script>
+	<script type="text/javascript">
+	$("#add").click(function(){
+		var tex=$("#text").val();
+		console.log(tex);
+		/*var list="<li>"+tex+"</li>"
+		var html=$(".list").html()+list
+		$(".list").html(html)*/
+		var list="<li>"+tex+"<input type='button' value='删除' class='delete'>"+"</li>"
+		$(".list").append(list)//append() 方法在被选元素的结尾插入指定内容;如需在被选元素的开头插入内容，使用 prepend() 方法
+		$(".delete").click(function(){
+			$(this).parent().remove()
+		})
+	})
+	$(".delete").click(function(){
+		$(this).parent().remove()
+	})
+	</script>
+</body>
+</html>

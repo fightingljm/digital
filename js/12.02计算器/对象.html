@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Object</title>
+</head>
+<body>
+	<script>
+		var person={
+			name:"张三",
+			age:"20",
+			sayName:function(){
+				console.log("我是"+this.name)
+			}
+		}
+		var a=person.name;
+		console.log(a)
+		var b=person.age;
+		alert(b)
+		person.sayName();
+		/*function fun(){  //封装函数
+			var a=1;
+			var b=2;
+			console.log(a+b);
+		}
+		fun();*/   //调用函数
+		function fun(a,b){   //通过传参数封装函数--例如：计算器里
+			console.log(a+b);
+		}
+		fun(1,2);  //给定参数或变量，并调用
+	</script>
+</body>
+</html>

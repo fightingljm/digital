@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>手机号规则</title>
+</head>
+<body>
+	<script>
+	
+		/*//手机号
+		var re=/^1(5|8|3)[0-9]{9}$/;
+		var str="15345678901";
+		var result=re.exec(str);
+		console.log(result);*/
+
+		/*var re=/[0-9](?=c)/;
+		var str="3234c";
+		var result=re.exec(str);
+		console.log(result);*/
+
+		//邮箱
+		var re=/^[a-zA-Z0-9][a-zA-Z0-9_]+@(qq|QQ|sina|163|yahoo|126).(com|cn|com.cn)$/;
+		var str="904089747@yahoo.cn";
+		var result=re.exec(str);
+		console.log(result);
+	</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>闭包</title>
+</head>
+<body>
+	<ul>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+		<li>1</li>
+	</ul>
+	<script>
+		/*function f1(){
+			var a=0;
+			//console.log(a);
+			function f2(){
+				a++;
+				console.log(a);
+			}
+		}
+		// f1();
+		// f1()();
+		var b=f1();
+		b();
+		b();*/
+		/*var obj=document.getElementsByTagName('li')
+		for(var i=0;i<obj.length;i++){
+			(function (x){
+				obj[x].onclick=function(){
+					console.log(x)
+					x=null;
+				}
+			})(i)
+		}*/
+		/*function m(y){
+			x+=3;
+			y+=3;
+			console.log(x+y)
+		}
+		var x=1;
+		var y=1;
+		m(8);//15
+		console.log(x+y)//5*/
+		//return会跳出函数;this指向调用方法的对象
+		/*var name1="the window"
+		var obj={
+			name1:"the object",
+			sayName:function(){
+				console.log(this.name1)//this指向obj
+				return function(){
+					console.log(this.name1)//this指向obj
+				}
+			}
+		}
+		// var b=obj.sayName();
+		// //console.log(b)
+		// window.b();
+		obj.sayName()()*/
+		var obj={
+			a:10,
+			b:{
+				a:11,
+				fun:function (){
+					console.log(this.a)
+				}
+			}
+		}
+		var f=obj.b.fun;
+		f();//undefined
+		// obj.b.fun();//11
+	</script>
+</body>
+</html>

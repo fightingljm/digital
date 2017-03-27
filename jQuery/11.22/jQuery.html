@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<style type="text/css">
+		.clearfix:after {
+    		content: ".";
+    		display: block;
+    		height: 0;
+    		clear: both;
+    		visibility: hidden;
+		}
+		.box{width: 200px;height: 100px;background-color: red;}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<button class="button1">按钮</button>
+	<button class="button2">复位</button>
+	<button class="button3">旋转</button>
+	<button class="button4">渐变</button>
+	<script src="js/jquery-3.0.0.js"></script>
+	<script type="text/javascript">
+		$(".button1").click(function(){
+			$(".box").css("background-color","blue")
+		})
+		$(".button2").click(function(){
+			$(".box").css("background-color","red")
+		})
+		$(".button3").click(function(){
+			$(".box").css("transform","rotate(90deg)")
+		})
+		$(".button4").click(function(){
+			$(".box").css("background","linear-gradient(red,blue)")
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>搜索匹配</title>
+	<style>
+		.see{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<input type="text">
+	<ul id="list">
+		<li>小刘</li>
+		<li>小红</li>
+		<li>小王</li>
+		<li>大刘a</li>
+		<li>大红a</li>
+		<li>大王A</li>
+	</ul>
+	<script>
+	function addClass(object,className){
+		var old=object.getAttribute("class");
+		if(old==null){
+			object.setAttribute("class",className)
+		}else{
+			if(old.match(className)==null){
+				object.setAttribute("class",old+" "+className)
+			}
+		}			
+	}
+	function removeClass(object,className){
+		var old=object.getAttribute("class");
+		var arr=(object.className).split(" ");
+		for(var i=0;i<arr.length;i++){
+			if(arr[i]==className){
+				arr.splice(i,1)
+				i=0;
+			}
+			var newClass=arr.join(" ")
+			object.className=newClass;			
+		}						
+	}
+	function G(id){
+		return document.getElementById(id)
+	}
+	var list=G("list")
+	var li=list.getElementsByTagName("li")
+	var input=document.getElementsByTagName('input')[0]
+	//浏览器兼容问题  onpropertychange支持IE8  oninput支持其他
+	input.oninput=search
+	input.onpropertychange=search
+	function search(){
+		for(var i=0;i<li.length;i++){
+			var zhi=input.value;
+
+			var re=new RegExp(zhi,"i");
+			var li1=li[i].innerHTML;
+			var result=re.exec(li1)
+			if(result==null){
+				addClass(li[i],"see");
+			}else{
+				removeClass(li[i],"see");
+			}
+		}
+	}		
+	</script>
+</body>
+</html>

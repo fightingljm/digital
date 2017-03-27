@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>楼层效果</title>
+	<style type="text/css">
+		*{margin: 0;padding: 0;}
+		img{width: 100%;display: block;}
+		ul{list-style: none;position: fixed;top: 200px;left: 30px;}
+		ul li{width: 50px;line-height: 50px;text-align: center;border: 1px solid #ccc;margin-top: 5px;cursor: pointer;font-size: 20px;color: red;}
+		button{background-color: red;color: white;position: fixed;top: 500px;left: 930px;cursor: pointer;}
+		.but{display: none;}
+
+	</style>
+</head>
+<body>
+	<img src="images/pic3.jpg" alt="">
+	<img src="images/pic5.jpg" alt="">
+	<img src="images/pic6.jpg" alt="">
+	<img src="images/pic8.jpg" alt="">
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+	<button class="but">返回顶部</button>
+	<script src="js/jquery-3.0.0.js"></script>
+	<script type="text/javascript">
+		$(document).scroll(function(){
+			var scrollTop=$(this).scrollTop()
+			if(scrollTop>300){
+				$("button").removeClass("but")
+			}else{
+				$("button").addClass("but")
+			}
+		})
+		$("ul li").click(function(){
+			var num=$(this).index();
+			/*var height1=$("img").css("height")
+			var height=parseFloat(height1)			//获取图片的高度
+			$("body").animate({"scrollTop":num*height},500)*/
+			$("body").animate({"scrollTop":$("img").eq(num).offset().top},500);
+		})
+		$("button").click(function(){
+			$("body").animate({"scrollTop":0},500)
+		})
+	</script>
+</body>
+</html>

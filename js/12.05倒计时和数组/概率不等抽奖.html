@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>概率不等抽奖</title>
+	<style>
+		*{margin: 0;padding: 0;margin: 0 auto;}
+		.box{width: 400px;height: 100px;line-height: 100px;font-size: 70px;background-color: #ccc;color: red;text-align: center;}
+		button{display: block;}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<button>抽奖</button>
+	<script src="js/jquery-3.0.0.js"></script>
+	<script>
+		var array=["一等奖","二等奖","三等奖","谢谢惠顾"]
+		var first=1,second=2,third=3;//设置一二三等奖的个数
+		$("button").click(function(){
+			var num=Math.ceil(Math.random()*10);
+			if(num==1){
+				$(".box").text(array[0])
+				first--;
+				if(first==0){
+					array[0]="谢谢惠顾"
+				}
+			}else if(num>1&&num<=3){
+				$(".box").text(array[1])
+				second--;
+				if(second==0){
+					array[1]="谢谢惠顾"
+				}
+			}else if(num>3&&num<=13){
+				$(".box").text(array[2])
+				third--;
+				if(third==0){
+					array[2]="谢谢惠顾"
+				}
+			}else{
+				$(".box").text(array[3])
+			}
+			if(array[0]==array[1]&&array[1]==array[2]&&array[2]==array[3]){
+				$(".box").text("抽奖结束")
+			}
+			console.log(array)
+		})
+	</script>
+</body>
+</html>

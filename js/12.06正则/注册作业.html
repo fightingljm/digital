@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注册凤凰通行证</title>
+	<style>
+	*{margin: 0;padding: 0;}
+		.box{
+			width: 600px;
+			height: 450px;
+			margin: 0 auto;
+			border: 1px solid #ccc;
+			margin-top: 10px;
+		}
+		h2{
+			font-size: 25px;
+			font-family: "微软雅黑";
+			font-weight: normal;
+			text-align: center;
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+		.box>a{
+			display: block;
+			width: 120px;
+			height: 40px;
+			border: 1px solid #ccc;
+			line-height: 40px;
+			text-align: center;
+			text-decoration: none;
+			color: black;
+			float: left;
+		}
+		.box .a{
+			border-bottom: none;
+			font-weight: bold;
+		}
+		form{
+			clear: both;
+			width: 512px;
+			margin: 0 auto;
+			padding-top: 45px;
+			/* display: none; */
+		}
+		.form{
+			display: none;
+		}
+		input{
+			margin-bottom: 15px;
+		}
+		lable{
+			width: 80px;
+			float: left;
+			text-align: right;
+			margin-right: 15px;
+			line-height: 30px;
+		}
+		label{
+			font-size: 12px;
+			color: #ccc;
+		}
+		input{
+			width: 270px;
+			height: 30px;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+		}
+		.form1 input:nth-child(11){
+			width: 125px;
+		}
+		.form2 input:nth-child(2){
+			width: 125px;
+		}
+		.form1 input:last-child,.form2 input:last-child{
+			width: 140px;
+			height: 30px;
+			margin-left: 95px;
+			border-radius: none;
+			background-color: #008de7;
+			color: white;
+		}
+		.red{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<h2>注册凤凰通行证</h2>
+		<a href="#" class="a1 a">邮箱注册</a>
+		<a href="#" class="a2">手机注册</a>
+		<form action="" class="form1">
+			<lable>电子邮箱</lable><input type="text" class="youxiang"><label class="youxiangla">请输入您常用的邮箱</label><br>
+			<lable>密码</lable><input type="password" class="mima1"><label class="mima1la">6-20位字符，不能使用空格</label><br>
+			<lable>确认密码</lable><input type="password" class="qrmima1"><label class="qrmima1la"></label><br>
+			<lable>验证码</lable><input type="text"><label class="yanzheng1la">请输入验证码</label><br>
+			<input type="submit" value="提交注册" class="anniu1">
+		</form>
+		<form action="" class="form2 form">
+			<lable>图片验证码</lable><input type="text"><label class="yanzheng2la">请输入图片验证码</label><br>
+			<lable>手机号</lable><input type="text" id="phone"><label class="phonela">请输入您的手机号</label><br>
+			<lable>短信验证码</lable><input type="text"><label class="yanzheng3la">请输入6位验证码</label><br>
+			<lable>密码</lable><input type="password" class="mima2"><label class="mima2la">6-20位字符，不能使用空格</label><br>
+			<lable>确认密码</lable><input type="password" class="qrmima2"><label class="qrmima2la"></label><br>
+			<input type="submit" value="提交注册" class="anniu2">
+		</form>
+	</div>
+	<script src="js/jquery-3.0.0.js"></script>
+	<script>
+		$(".box>a").click(function(){
+			$(this).addClass("a").siblings().removeClass("a");
+		})
+		$(".a1").click(function(){
+			$(".form2").addClass("form");
+			$(".form1").removeClass("form");
+		})
+		$(".a2").click(function(){
+			$(".form1").addClass("form");
+			$(".form2").removeClass("form");
+		})
+		/*$(".anniu1").click(function(){
+			var youxiang=$(".youxiang").val();
+
+			var re1=/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+			var str1=youxiang;
+			var result1=re1.exec(str1);
+			console.log(result1);
+			if(youxiang==""){
+				$(".youxiangla").text("请输入邮箱").addClass("red")
+			}else{
+				if(result1==null){
+					$(".youxiangla").text("电子邮箱格式✘").addClass("red")
+				}else{
+					$(".youxiangla").text("电子邮箱格式✔")
+				}
+			}			
+
+			var pw1=$(".mima1").val();
+			var pw2=$(".qrmima1").val();
+			if(pw1==""||pw2==""){
+				$(".mima1la").text("密码或确认密码不能为空").addClass("red")
+			}else{
+				if(pw1!==pw2){
+					$(".mima1la").text("密码和确认密码不一致").addClass("red")
+				}
+			}						
+		})
+		$(".anniu2").click(function(){
+			var num=$("#phone").val();
+
+			var re=/^1(5|8|3)[0-9]{9}$/;
+			var str=num;
+			var result=re.exec(str);
+			console.log(result);
+			if(num==""){
+				$(".phonela").text("手机号不能为空").addClass("red")
+			}else{
+				if(result==null){
+					$(".phonela").text("手机号✘").addClass("red")
+				}else{
+					$(".phonela").text("手机号✔")
+				}
+			}			
+
+			var pw1=$(".mima2").val();
+			var pw2=$(".qrmima2").val();
+			if(pw1==""||pw2==""){
+				$(".mima2la").text("密码或确认密码不能为空").addClass("red")
+			}else{
+				if(pw1!==pw2){
+					$(".mima1la").text("密码和确认密码不一致").addClass("red")
+				}
+			}			
+		})*/
+		$(".youxiang").blur(function(){
+			var youxiang=$(".youxiang").val();
+
+			var re1=/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+			var str1=youxiang;
+			var result1=re1.exec(str1);
+			console.log(result1);
+			if(youxiang==""){
+				$(".youxiangla").text("请输入邮箱").addClass("red")
+			}else{
+				if(result1==null){
+					$(".youxiangla").text("邮箱格式✘").addClass("red")
+				}else{
+					$(".youxiangla").text("邮箱格式✔")
+				}
+			}
+		})
+		$(".youxiang").focus(function(){
+			var youxiang=$(".youxiang").val();
+			if(youxiang==""){
+				$(".youxiangla").text("请输入您常用的邮箱").removeClass("red")
+			}
+		})
+		$(".mima1").blur(function(){
+			var mima1=$(".mima1").val();
+
+			var re1=/^\S{6,20}$/;
+			var str1=mima1;
+			var result1=re1.exec(str1);
+			console.log(result1);
+			if(mima1==""){
+				$(".mima1la").text("请输入邮箱").addClass("red")
+			}else{
+				if(result1==null){
+					$(".mima1la").text("密码格式✘").addClass("red")
+				}else{
+					$(".mima1la").text("密码格式✔")
+				}
+			}
+		})
+		$(".mima1").focus(function(){
+			var mima1=$(".mima1").val();
+			if(mima1==""){
+				$(".mima1la").text("6-20位字符，不能使用空格").removeClass("red")
+			}
+		})
+		$(".qrmima1").blur(function(){
+			var qrmima1=$(".qrmima1").val();
+
+			var re1=/^\S{6,20}$/;
+			var str1=qrmima1;
+			var result1=re1.exec(str1);
+			console.log(result1);
+			if(qrmima1==""){
+				$(".qrmima1la").text("请确认密码").addClass("red")
+			}
+			var pw1=$(".mima1").val();
+			var pw2=$(".qrmima1").val();
+			if(pw1!==pw2){
+				$(".qrmima1la").text("前后密码不一致").addClass("red")
+			}
+		})
+		$(".qrmima1").focus(function(){
+			var qrmima1=$(".qrmima1").val();
+			if(qrmima1==""){
+				$(".qrmima1la").text("").removeClass("red")
+			}			
+		})
+
+		$("#phone").blur(function(){
+			var num=$("#phone").val();
+
+			var re=/^1(5|8|3)[0-9]{9}$/;
+			var str=num;
+			var result=re.exec(str);
+			console.log(result);
+			if(num==""){
+				$(".phonela").text("请输入手机号").addClass("red")
+			}else{
+				if(result==null){
+					$(".phonela").text("手机号格式✘").addClass("red")
+				}else{
+					$(".phonela").text("手机号格式✔")
+				}
+			}
+		})
+		$("#phone").focus(function(){
+			var phone=$(".#phone").val();
+			if(phone==""){
+				$(".phonela").text("请输入您的手机号").removeClass("red")
+			}
+		})
+		$(".mima2").blur(function(){
+			var mima2=$(".mima2").val();
+
+			var re1=/^\S{6,20}$/;
+			var str1=mima2;
+			var result1=re1.exec(str1);
+			console.log(result1);
+			if(mima2==""){
+				$(".mima2la").text("请输入密码").addClass("red")
+			}else{
+				if(result1==null){
+					$(".mima2la").text("密码格式✘").addClass("red")
+				}else{
+					$(".mima2la").text("密码格式✔")
+				}
+			}
+		})
+		$(".mima2").focus(function(){
+			var mima2=$(".mima2").val();
+			if(mima2==""){
+				$(".mima2la").text("6-20位字符，不能使用空格").removeClass("red")
+			}
+		})
+		$(".qrmima2").blur(function(){
+			var qrmima2=$(".qrmima2").val();
+
+			var re1=/^\S{6,20}$/;
+			var str1=qrmima2;
+			var result1=re1.exec(str1);
+			console.log(result1);
+			if(qrmima2==""){
+				$(".qrmima2la").text("请确认密码").addClass("red")
+			}
+			var pw1=$(".mima1").val();
+			var pw2=$(".qrmima2").val();
+			if(pw1!==pw2){
+				$(".qrmima2la").text("前后密码不一致").addClass("red")
+			}
+		})
+		$(".qrmima2").focus(function(){
+			var qrmima2=$(".qrmima2").val();
+			if(qrmima2==""){
+				$(".qrmima2la").text("").removeClass("red")
+			}			
+		})
+	</script>
+</body>
+</html>

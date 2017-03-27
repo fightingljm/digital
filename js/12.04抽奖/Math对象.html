@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>math对象</title>
+</head>
+<body>
+	<script>
+		//Math对象
+		var pi_value=Math.PI;
+		var sqrt_value=Math.sqrt(16);
+		console.log(pi_value)
+		console.log(sqrt_value)
+
+		//floor() 方法可对一个数进行下舍入
+		document.write(Math.floor(0.60) + "<br />")
+		document.write(Math.floor(0.40) + "<br />")
+		document.write(Math.floor(5) + "<br />")
+		document.write(Math.floor(5.1) + "<br />")
+		document.write(Math.floor(-5.1) + "<br />")
+		document.write(Math.floor(-5.9))
+
+		//random(a,b)--返回 a ~ b 之间的随机数。
+		function random(min,max){
+		    return Math.floor(min+Math.random()*(max-min));
+				//返回 min 到 max 之间的 随机整数
+		}
+		var rNum=random(2,5);
+   		console.log(rNum);
+	</script>
+</body>
+</html>

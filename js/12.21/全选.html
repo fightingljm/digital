@@ -1,0 +1,75 @@
+<html>
+<head>
+<script>
+function selectAll(){
+ var checklist = document.getElementsByName ("selected");
+   if(document.getElementById("controlAll").checked)
+   {
+   for(var i=0;i<checklist.length;i++)
+   {
+      checklist[i].checked = 1;
+   } 
+ }else{
+  for(var j=0;j<checklist.length;j++)
+  {
+     checklist[j].checked = 0;
+  }
+ }
+}
+</script>
+</head>
+<body>
+<form>
+<input onclick="selectAll()" type="checkbox"   name="controlAll" style="controlAll" id="controlAll"/>全选<br>
+1:<input type="checkbox" name="selected" value="1"/><br>
+2:<input type="checkbox" name="selected" value="2"/><br>
+3:<input type="checkbox" name="selected" value="3"/><br>
+4:<input type="checkbox" name="selected" value="4"/><br>
+5:<input type="checkbox" name="selected" value="5"/><br>
+6:<input type="checkbox" name="selected" value="6"/><br>
+</form>
+<p>
+js按键事件说明<br>
+onClick事件<br>
+鼠标单击事件是最常见的事件之一，当用户单击鼠标按钮时。同时onClick指定的事件处理程序或代码将被调用执行。<br>
+文件说明<br>
+第11行使用 onClick事件弹出警告提示对话框。<br>
+onChange事件<br>
+onChange事件就是当文本框的内容改变时发生的事件。<br>
+文件说明<br>
+第11行使用onChange事件，当文本框内容发生改变的时候弹出警告提示对话框。<br>
+onSelect事件<br>
+onSelect事件就是当文本框的内容被选中时发生的事件。<br>
+文件说明<br>
+第11行使用onSelect事件，当文本框中内容被选中的时候，警告提示对话框显示的结果。<br>
+onFocus事件<br>
+onFocus事件就是当光标落在文本框中时发生的事件。<br>
+文件说明<br>
+第12行使用Onfocus事件，当用鼠标选中第二个文本框的时候，自动触发Onfocus事件，弹出一个对话框。<br>
+onLload事件<br>
+onload事件是当前的网页被显示时发生的事件。<br>
+文件说明<br>
+第9行使用OnLoad事件，当打开网页的时候自动打开一个警示框。<br>
+onUnload事件<br>
+onUnload事件是当当前的网页被关闭时发生的事件。<br>
+文件说明 <br>
+第9行使用onUnload事件，当关闭网页的时候自动打开一个警示框。<br>
+onBlur事件<br>
+onBlur事件就是当光标离开文本框中时发生的事件。<br>
+15  <br>
+文件说明<br>
+第12行使用onBlur事件，当用鼠标离开第二个文本框的时候，自动触发onBlur事件，弹出一个对话框。<br>
+onMouseover事件<br>
+onMouseover事件是指当鼠标移动到页面元素上方时发生的事件。、、<br>
+文件说明<br>
+第10行使用onMouseover事件，当鼠标指向滚动文字的时候，自动触发onMouseover事件。<br>
+onMouseout事件<br>
+onmouseout事件是指当鼠标离开页面元素上方时发生的事件。文件说明<br>
+第10行使用onmouseout事件，当鼠标离开滚动文字的时候，自动触发 onmouseout事件。<br>
+onDbclick事件<br>
+当鼠标双击鼠标按钮时，产生ondbclick事件。同时ondbclick指定的事件处理程序或代码将被调用执行。<br>
+文件说明<br>
+第11行使用ondbclick事件弹出警告提示对话框。<br>
+</p>
+</body>
+</html>

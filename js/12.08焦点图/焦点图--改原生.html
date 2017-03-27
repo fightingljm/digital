@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>焦点图</title>
+	<style type="text/css">
+		img{position: relative;}
+		ul{list-style: none;width: 545px;position: absolute;top: 280px;left: 170px;}
+		li{float: left;width: 20px;line-height: 18px;border: 1px solid #ccc;background-color:#494a93;}
+		a:hover{background-color: red;}
+		a{display: block;width: 20px;line-height: 18px;color: white;text-decoration: none;text-align: center;font-size: 12px;font-family: arial;}
+		p{width: 480px;text-align: center;}
+	</style>
+</head>
+<body>
+	<img src="images/1.jpg" alt="" id="image">
+	<ul id="ul">
+		<li><a href="images/1.jpg" title="日落">1</a></li>
+		<li><a href="images/2.jpg" title="钢琴">2</a></li>
+		<li><a href="images/3.jpg" title="大海">3</a></li>
+		<li><a href="images/4.jpg" title="秋色">4</a></li>
+	</ul>
+	<p id="p">日落</p>
+	<script type="text/javascript">
+		// $("ul li a").click(function(event){
+
+		// 	var imgsrc=$(this).attr("href");
+		// 	/*$("img").attr("src",imgsrc);*/
+		// 	document.getElementById("image").src=imgsrc;
+			
+		// 	$(this).css({"background-color":"red","color":"yellow"});
+		// 	$(this).parent().siblings().find("a").css({"background-color":"#494a93","color":"white"});
+		// 	event.preventDefault();
+
+		// 	var txt=$(this).attr("title");
+		// 	console.log(txt);  //在控制台输出
+		// 	$("p").text(txt);
+		// })
+		var image = document.getElementById('image')
+		var num = document.getElementById('ul').getElementsByTagName('li').length
+
+		for(var i=0;i<num;i++){			
+			document.getElementsByTagName('a')[i].onclick=function(event){
+				var imgsrc =this.href;
+				var tex =this.title;
+				console.log(imgsrc);
+				console.log(tex);
+				document.getElementById("image").src=imgsrc;
+				document.getElementById('p').textContent=tex;
+				this.style.background='red';
+				// this.parentNode.style.background='#494a93';
+				this.style.color='yellow';
+				event.preventDefault();
+			}
+		}
+	</script>
+</body>
+</html>

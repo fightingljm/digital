@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>addClass原生</title>
+	<style>
+		.testClass{  
+	        background-color:gray;  
+	    }
+	    .testClas{  
+	        color:red;  
+	    }
+	    #box{
+	    	width:250px;
+	    	height:100px;
+	    	border: 1px solid #ccc;
+	    }
+	</style>
+</head>
+<body>
+	<div id = "box" class="">刘金萌</div>  
+    <input type = "button" value = "Test" id = "Test" /> 
+	<script>
+		function hasClass(obj, cls) {  
+		    return obj.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));  
+		}  
+		  
+		function addClass(obj, cls) {  
+		    if (!this.hasClass(obj, cls)) obj.className += " " + cls;  
+		}  
+		  
+		function removeClass(obj, cls) {  
+		    if (hasClass(obj, cls)) {  
+		        var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');  
+		        obj.className = obj.className.replace(reg, ' ');  
+		    }  
+		}  
+		  
+		function toggleClass(obj,cls){  
+		    if(hasClass(obj,cls)){  
+		        removeClass(obj, cls);  
+		    }else{  
+		        addClass(obj, cls);  
+		    }  
+		}  
+		  
+		document.getElementById('Test').onclick=function(){  
+		    var box = document. getElementById('box');  
+		    toggleClass(box,"testClass"); 
+		}  
+	</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>date对象</title>
+</head>
+<body>
+	<p></p>
+	<script src="js/jquery-3.0.0.js"></script>
+	<script>				
+		function count(){
+			var date=new Date();
+			var hour=date.getHours();
+			var minute=date.getMinutes();
+			var second=date.getSeconds();
+			if(hour<10){
+				hour="0"+hour;
+			}
+			if(minute<10){
+				minute="0"+minute;
+			}
+			if(second<10){
+				second="0"+second;
+			}
+			$("p").text(hour+":"+minute+":"+second)
+		}
+		count();
+		setInterval(count,1000)
+	</script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>计算器</title>
+	<style type="text/css">
+		body{width: 200px;margin: 0 auto;}
+		body>input{text-align: right;margin-top: 20px;border-radius: 5px;}
+		.number{width: 173px;text-align: center;}
+		.sign{width: 173px;text-align: center;}
+		.ec{width: 173px;text-align: center;}
+		.number input,.sign input,.ec input{width: 30px;height: 30px;border-radius: 8px;background-color: #999;outline: none;border: none;margin-top: 10px;margin-left: 5px;}
+	</style>
+</head>
+<body>
+	<!-- 布局很重要，大块分文本框，数字，运算符，等号和清除；先写功能最后美化； -->
+	<!-- 布局有了，第一步先实现点击数字获取一堆字符串，并把字符串在文本框输出 -->
+	<!-- 第二步，获取两个数。这两个数分别是在点击运算符前后得到的，先给运算符一个变量为空，当点击运算符的时候，把运算符的val赋值给这个变量。即需要判断这个变量的值是否为空，值为空时为第一个数；点击运算符时变量被赋值，不为空，这时候得到第二个数。拿到两个数后点击等号用switch语句可以进行各种运算符的计算。 -->
+	<!-- 第三步，实现点击等号之后继续运算。即在点击等号之后将运算得到的值赋给第一个数，同时继续把第二个数的值变为空 -->
+	<!-- 第四步，实现不点击等号仍可继续运算。即在点击运算符的时候需要判断第二个数是否为空，如果第二个数不为空时触发了点击运算符的事件，那么同样用switch判断...... -->
+	<!-- 第五步，实现清除的功能。1需要把输入框清空“$(:text).val("")”;2需要num1为空；3需要num2为空；4需要运算符为空 -->
+	<!-- 注意：计算的时候要把字符串转为数字；第四部时要把获取运算符val值得那个写在switch下面； -->
+	<!-- 需要实现的：1、获取两个数；2、点击等号之后，用得到的值，连续运算；3、不点击等号连续运算；4、点击等号之后，忽略得到的值重新运算 -->
+	<input type="text">
+	<div class="number">
+		<input type="button" value="1">
+		<input type="button" value="2">
+		<input type="button" value="3"><br>
+		<input type="button" value="4">
+		<input type="button" value="5">
+		<input type="button" value="6"><br>
+		<input type="button" value="7">
+		<input type="button" value="8">
+		<input type="button" value="9"><br>
+		<input type="button" value="0">
+	</div>
+	<div class="sign">
+		<input type="button" value="+">
+		<input type="button" value="-">
+		<input type="button" value="*">
+		<input type="button" value="/">
+	</div>
+	<div class="ec">
+		<input class="eque" type="button" value="=">
+		<input class="cancel" type="button" value="c">
+	</div>	
+	<script src="js/jquery-3.0.0.js"></script>
+	<script>
+		var num1="";//定义num1和2是为了让他存储需要计算的两个数
+		var num2="";
+		var num3="";//定义num3是为了计算存储的两个数
+		var sign="";//定义sign先为空
+		var eque="";
+		function count(fuhao,first,second){    //函数封装
+			switch(fuhao){
+				case "+":num3=Number(first)+Number(second);break;
+				case "-":num3=Number(first)-Number(second);break;
+				case "*":num3=Number(first)*Number(second);break;
+				case "/":num3=Number(first)/Number(second);break;
+			}
+			return num3;
+		}
+		$(".number :button").click(function(){	//触发点击number里的button事件	
+			var num=$(this).val()	//获取点击button的val()					
+			if(sign==""){    //通过sign取值空与否得到需要计算的两个数
+				if(eque!=""){ //点击等号之后有两种情况：一种是点运算符，一种是点数字；如果是点运算符-则它的值不为空,（运算符不为空时，就不需要清空之前的值）
+					num1="";
+					sign="";
+				}
+				num1=num1+num;   //存储得到的第一个数
+				$(":text").val(num1)   //把存储的第一个数input输出
+			}else{
+				num2=num2+num;   //存储得到的第二个数
+				$(":text").val(num1+sign+num2)   //把存储的第二个数input输出
+			}
+		})
+		$(".sign :button").click(function(){	//触发点击sign里的button事件				
+			if(num2!=""){      //通过判断num2的值是否为空
+				/*switch(sign){   //num2不为空的同时触发了sign里的button，所以要用switch语句进行运算
+					case "+":num3=Number(num1)+Number(num2);break;
+					case "-":num3=Number(num1)-Number(num2);break;
+					case "*":num3=Number(num1)*Number(num2);break;
+					case "/":num3=Number(num1)/Number(num2);break;
+				}*/
+				count(sign,num1,num2);   //函数调用
+				num1=num3;  //把得到的num3赋值给第一个数，保证可以连续运算
+				num2="";   //把num2赋值为空，因为需要得到新的num2,保证可以连续运算
+			}
+			sign=$(this).val()//点击运算符事件出发时把this.val赋值给原来为空的sign
+			$(":text").val(num1+sign)	//把存储的第一个数和运算符input输出	
+		})
+		$("div .eque").click(function(){     //触发点击等号事件
+			eque=$(this).val()
+			/*switch(sign){     //触发了等号时，判断运算符，用switch语句进行运算
+				case "+":num3=Number(num1)+Number(num2);break;
+				case "-":num3=Number(num1)-Number(num2);break;
+				case "*":num3=Number(num1)*Number(num2);break;
+				case "/":num3=Number(num1)/Number(num2);break;
+			}*/
+			count(sign,num1,num2);   //函数调用
+			$(":text").val(num3) //把得到的两个数计算的值input输出
+			num1=num3;   //把得到的num3赋值给第一个数，保证可以连续运算
+			num2="";	//把num2赋值为空，因为需要得到新的num2,保证可以连续运算
+			sign="";			
+		})
+		$("div .cancel").click(function(){	//触发点击清除事件	
+			$(":text").val("")    //清空input;
+			num1=""; //清空num1;
+			num2=""; //清空num2;
+			sign=""; //清空sign;
+		})
+	</script>
+
+</body>
+</html>

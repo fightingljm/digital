@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>switch</title>
+	<style>
+		img{position: relative;}
+		ul{list-style: none;width: 545px;position: absolute;top: 280px;left: 170px;}
+		li{float: left;width: 20px;line-height: 18px;border: 1px solid #ccc;background-color:#494a93;}
+		a:hover{background-color: red;}
+		a{display: block;width: 20px;line-height: 18px;color: white;text-decoration: none;text-align: center;font-size: 12px;font-family: arial;}
+	</style>
+</head>
+<body>
+	<img src="images/1.jpg" alt="">
+	<ul>
+		<li><a href="#" title="日落">1</a></li>
+		<li><a href="#" title="钢琴">2</a></li>
+		<li><a href="#" title="海边">3</a></li>
+		<li><a href="#" title="秋色">4</a></li>
+	</ul>
+	<script src="js/jquery-3.0.0.js"></script>
+	<script>
+		$("ul li a").click(function(event){
+			var num=$(this).parent().index();
+			//如果用.text()，需要字符串转换
+			//eg. var tex=Number($(this).text());//因为case判断的是 ===
+			//用字符串连接写--等于写switch  $("img").attr("src","images/"+num+".jpg");
+			switch(num){
+				case 0:$("img").attr("src","images/1.jpg");break;
+				case 1:$("img").attr("src","images/2.jpg");break;
+				case 2:$("img").attr("src","images/3.jpg");break;
+				case 3:$("img").attr("src","images/4.jpg");break;
+			}
+			event.preventDefault();
+		})		
+	</script>
+</body>
+</html>

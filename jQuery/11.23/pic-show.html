@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>焦点图转换</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<style type="text/css">
+		.pic-show{width: 480px;overflow: hidden;}
+		.pic{width: 1920px;height: 320px;position: relative;}
+		img{display: block;float: left;}
+		ul{width: 120px;height: 18px;position: absolute;top: 280px;left: 185px;}
+		li{float: left;width: 20px;height: 18px;margin-left: 5px;}
+		/* a{display: block;width: 20px;line-height: 18px;text-align: center;font-size: 20px;font-family: arial;text-decoration: none;} */
+		a{display: block;width: 20px;height: 18px;text-decoration: none;border: 1px solid #ccc;border-radius: 50%;background-color: #ccc;opacity: 0.6;}
+		/* .pic-show a:hover{background-color: #3b216a;} */
+		.aHover{background-color: #3b216a;} 
+		.aCss{background-color: #094a99;}
+		.box{background-color: #8c66cf;width: 100px;height: 100px;}
+		.boxCss{background-color: #ffa622;}
+	</style>
+</head>
+<body>
+	<div class="pic-show">
+		<div class="pic">
+			<img src="images/1.jpg" alt="">
+			<img src="images/2.jpg" alt="">
+			<img src="images/3.jpg" alt="">
+			<img src="images/4.jpg" alt="">
+		</div>
+		<ul>
+			<li><a class="aCss" href="#"></a></li>
+			<li><a href="#"></a></li>
+			<li><a href="#"></a></li>
+			<li><a href="#"></a></li>
+		</ul>
+	</div>
+	<div class="box"></div>
+	<!-- <ul>
+		<li><a href="#">1</a></li>
+		<li><a href="#">2</a></li>
+		<li><a href="#">3</a></li>
+		<li><a href="#">4</a></li>
+	</ul> -->
+	
+	<script src="js/jquery-3.0.0.js"></script>
+<!--	<script type="text/javascript">
+		//$("ul li a").click(function(event){
+			var num=$(this).text() - 1;//获取文本中的0123
+			var mlNum=num * -480;
+			$(".pic").css("margin-left",mlNum)
+			event.preventDefault();
+		})
+	</script> -->
+	<script type="text/javascript">
+		$("ul li a").click(function(event){
+			var num=$(this).parent().index();//获取索引值
+			var mlNum=num * -480+'px';//字符串链接
+			//$(".pic").css("margin-left",mlNum)
+			$(".pic").animate({"margin-left":mlNum},500)//动画
+			//$(this).css("background-color","#494a93").parent().siblings().find("a").css("background-color","#ccc");//链式操作 
+			$(this).addClass("aCss").parent().siblings().find("a").removeClass("aCss");//addClass 
+			event.preventDefault();
+		})
+		$("ul li a").hover(function(){
+			$(this).addClass("aHover")
+		},function(){
+			$(this).removeClass("aHover")
+		})
+	</script>
+	<script type="text/javascript">
+		//$(".box").hover(function(){
+		//	$(this).addClass("boxCss")
+		//},function(){
+		//	$(this).removeClass("boxCss")
+		//})
+		/*$(".box").mouseenter(function(){
+			$(this).addClass("boxCss")
+		})
+		$(".box").mouseleave(function(){
+			$(this).removeClass("boxCss")
+		})*/
+		$(".box").mouseover(function(){
+			$(this).addClass("boxCss")
+		})
+		$(".box").mouseout(function(){
+			$(this).removeClass("boxCss")
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+
+.main-inner{width: 939px;height: 895px;margin: 0 auto;}
+.main-left{width: 618px;overflow:hidden;float: left;padding-right: 20px;}
+.main-left a img{margin-top: 20px;margin-right: 15px;}
+
+.main-right{width: 300px;overflow:hidden;float: right;}
+.main-right img{padding-bottom: 30px;}
+.main-right p{padding-left: 20px;padding-bottom: 10px;line-height: 25px;font-size: 15px;font-family:Tahoma;color: #7f7d6d;}
+.main-right p span{color: white;}
+.main-right aside{padding-top: 215px;padding-left: 10px;}
+.main-right aside a{color: #cb2800;}

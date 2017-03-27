@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>搜索匹配</title>
+	<style>
+		.see{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<input type="text">
+	<ul>
+		<li class="li">小刘</li>
+		<li class="li1">小红</li>
+		<li class="li2">小王</li>
+		<li class="li3">大刘</li>
+		<li class="li4">大红</li>
+		<li class="li4">大王</li>
+	</ul>
+	<script src="js/jquery-3.0.0.js"></script>
+	<script>
+	$("input").blur(function(){
+		/*var zhi=$("input").val();
+		console.log(zhi);
+
+		var li=$("ul .li").text();
+		var li1=$("ul .li1").text();
+		var li2=$("ul .li2").text();
+		var li3=$("ul .li3").text();
+		var li4=$("ul .li4").text();
+		
+		var re=new RegExp(zhi);
+
+		var result=re.exec(li)
+		var result1=re.exec(li1)
+		var result2=re.exec(li2)
+		var result3=re.exec(li3)
+		var result4=re.exec(li4)
+
+		
+		console.log(result);
+		console.log(result1);
+		console.log(result2);
+		console.log(result3);
+		console.log(result4);
+
+		if(result==null){
+			$(".li").addClass("see")
+		}else{
+			$(".li").removeClass("see")
+		}
+		if(result1==null){
+			$(".li1").addClass("see")
+		}else{
+			$(".li1").removeClass("see")
+		}
+		if(result2==null){
+			$(".li2").addClass("see")
+		}else{
+			$(".li2").removeClass("see")
+		}
+		if(result3==null){
+			$(".li3").addClass("see")
+		}else{
+			$(".li3").removeClass("see")
+		}
+		if(result4==null){
+			$(".li4").addClass("see")
+		}else{
+			$(".li4").removeClass("see")
+		}*/
+		for(var i=0;i<$("ul li").length;i++){
+			var zhi=$("input").val();
+
+			var re=new RegExp(zhi,"i");
+			var li=$("ul li").eq(i).text();
+			var result=re.exec(li)
+
+			if(result==null){
+				$("ul li").eq(i).addClass("see")
+			}else{
+				$("ul li").eq(i).removeClass("see")
+			}
+		}
+
+	})		
+	</script>
+</body>
+</html>

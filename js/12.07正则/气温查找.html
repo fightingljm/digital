@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>气温查找</title>
+</head>
+<body>
+	<script>
+		/*var str="今天天气不错，最高气温20℃，最低气温-1℃。";
+		var re=/-?[0-9]+(?=℃)/g;
+		console.log(re.exec(str))
+		console.log(re.exec(str))*/
+		var str="今天天气不错，最高气温20℃，最低气温-1℃。";
+		var re=/-?[0-9]+(?=℃)/g;
+		var n=str.match(re);
+		console.log(n);
+	</script>
+</body>
+</html>

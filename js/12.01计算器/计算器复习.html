@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>计算器复习</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+	<input type="text">
+	<div class="number">
+		<input type="button" value="1">
+		<input type="button" value="2">
+		<input type="button" value="3">
+		<input type="button" value="4">
+		<input type="button" value="5">
+		<input type="button" value="6">
+		<input type="button" value="7">
+		<input type="button" value="8">
+		<input type="button" value="9">
+		<input type="button" value="0">
+	</div>
+	<div class="yunsuan">
+		<input type="button" value="+">
+		<input type="button" value="-">
+		<input type="button" value="*">
+		<input type="button" value="/">
+	</div>
+	<div>
+		<input type="button" value="=" class="dengyu">
+		<input type="button" value="c" class="cancle">
+	</div>
+	<script src="js/jquery-3.0.0.js"></script>
+	<script>
+		var num1="";
+		var num2="";
+		var num3="";
+		var yunsuan="";
+		$(".number input").click(function(){
+			var num=$(this).val();			
+			if(yunsuan==""){
+				num1=num1+num;
+				$(":text").val(num1)
+			}else{
+				num2=num2+num;
+				$(":text").val(num1+yunsuan+num2)
+			}
+		})
+		$(".yunsuan input").click(function(){			
+			if(num2!=""){
+				switch(yunsuan){
+					case "+":num3=Number(num1)+Number(num2);break;
+					case "-":num3=Number(num1)-Number(num2);break;
+					case "*":num3=Number(num1)*Number(num2);break;
+					case "/":num3=Number(num1)/Number(num2);break;
+				}
+				$(":text").val(num3)
+				num1=num3;
+				num2="";
+			}
+			yunsuan=$(this).val();
+			$(":text").val(num1+yunsuan)
+		})
+		$(".dengyu").click(function(){
+			switch(yunsuan){
+				case "+":num3=Number(num1)+Number(num2);break;
+				case "-":num3=Number(num1)-Number(num2);break;
+				case "*":num3=Number(num1)*Number(num2);break;
+				case "/":num3=Number(num1)/Number(num2);break;
+			}
+			$(":text").val(num3)
+			num1=num3;
+			num2="";
+		})
+		$(".cancle").click(function(){
+			$(":text").val("");
+			num1="";
+			num2="";
+			yunsuan="";
+		})
+	</script>
+</body>
+</html>

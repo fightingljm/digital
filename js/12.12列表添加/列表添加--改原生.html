@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>列表添加--Dom操作</title>
+</head>
+<body>
+	<input type="text" id="text">
+	<input type="button" id="add" value="添加">
+	<ul id="list">
+		<li>箱包<input type="button"value="删除"></li>
+		<li>家电<input type="button"value="删除"></li>
+		<li>装修<input type="button"value="删除"></li>
+		<li>笔记本<input type="button"value="删除"></li>
+	</ul>
+	<script type="text/javascript">
+	function G(id){
+		return document.getElementById(id);
+	}
+	G("add").onclick=function(){
+		var tex=G("text").value;
+		var li=document.createElement("li")
+
+		var input=document.createElement("input")
+		input.type = "button";  
+		input.value = "删除";
+
+		var node=document.createTextNode(tex);
+
+		li.appendChild(node);
+		li.appendChild(input);
+
+		var list=G("list");
+		list.appendChild(li);
+		
+		/*var shanchu=G("list").getElementsByTagName('input')		
+		for(var i=0;i<shanchu.length;i++){
+			shanchu[i].onclick=function(){
+				this.parentNode.parentNode.removeChild(this.parentNode)
+			}
+		}*/
+	}
+	/*var shanchu=G("list").getElementsByTagName('input')	
+	for(var i=0;i<shanchu.length;i++){
+		shanchu[i].onclick=function(){
+			this.parentNode.parentNode.removeChild(this.parentNode)
+		}
+	}*/	
+	//事件委托 委托对象为祖先级元素
+	G("list").onclick=function(event){
+		var tar=event.target;
+		//console.log(tar)
+		if(tar.value=="删除"){
+			tar.parentNode.parentNode.removeChild(tar.parentNode)
+		}
+	}	
+	</script>
+</body>
+</html>
